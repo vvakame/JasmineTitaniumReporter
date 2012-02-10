@@ -1,0 +1,23 @@
+util = require 'util'
+fs = require 'fs'
+exec = require('child_process').exec
+spawn = require('child_process').spawn
+
+callback = (child) ->
+  child.stdout.on 'data', (data) ->
+    util.print data
+  child.stderr.on 'data', (data) ->
+    util.print data
+
+coffeeWatch = (dest, src) ->
+  # spawn
+  callback spawn 'coffee', ['-cwl', '-o', dest, src]
+
+task 'watch', 'watches and compiles coffee file', ->
+  console.log "Spawning coffee watcher..."
+
+  # client
+  coffeeWatch "Resources", "original/main"
+  coffeeWatch "Resources/test", "original/test"
+  coffeeWatch "original/output", "original"
+
