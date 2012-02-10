@@ -1,0 +1,11 @@
+.DS_Store
+*.pyc
+tmp
+.idea/
+build/
+build.log
+
+.settings/com.appcelerator.titanium.mobile.prefs
+.settings/com.appcelerator.titanium.core.prefs
+.settings/org.eclipse.ltk.core.refactoring.prefs
+
